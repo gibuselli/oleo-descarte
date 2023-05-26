@@ -1,5 +1,6 @@
 package br.com.univesp.oleodescarte.domain.doador;
 
+import br.com.univesp.oleodescarte.application.rest.DoadorRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -49,4 +50,14 @@ public class Doador {
     @NonNull
     @Column(name = "DOANDO")
     Boolean estaDoando;
+
+    public static Doador of(DoadorRequest request) {
+        return Doador.builder()
+                .nome(request.getNome())
+                .cidade(request.getCidade())
+                .bairro(request.getBairro())
+                .email(request.getEmail())
+                .qntDeOleo(request.getQntDeOleo())
+                .build();
+    }
 }
