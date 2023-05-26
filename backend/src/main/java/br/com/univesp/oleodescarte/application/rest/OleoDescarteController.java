@@ -20,14 +20,12 @@ public class OleoDescarteController {
 
     @GetMapping("doador")
     public ResponseEntity<DoadorResponse> getDoadorByEmail(@RequestParam("email") String email) {
-        Doador doador = doadorService.getDoadorByEmail(email);
-        return ResponseEntity.ok(DoadorResponse.of(doador));
+        return ResponseEntity.ok(DoadorResponse.of(doadorService.getDoadorByEmail(email)));
     }
 
     @PostMapping("cadastrar")
     public ResponseEntity<DoadorResponse> registerDoador(@Valid @RequestBody DoadorRequest request) {
-        Doador doador = doadorService.createNew(request);
-        return ResponseEntity.ok(DoadorResponse.of(doador));
+        return ResponseEntity.ok(DoadorResponse.of(doadorService.createNew(request)));
     }
 
 }
