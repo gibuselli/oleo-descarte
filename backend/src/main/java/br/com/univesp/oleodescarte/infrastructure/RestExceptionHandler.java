@@ -1,6 +1,6 @@
 package br.com.univesp.oleodescarte.infrastructure;
 
-import br.com.univesp.oleodescarte.domain.exception.DoadorCadastradoException;
+import br.com.univesp.oleodescarte.infrastructure.exception.DoadorCadastradoException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +17,9 @@ import java.util.Map;
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
+    static final String DETALHE_DO_ERRO = "detalhes";
+    static final String ERROS_DE_VALIDACAO = "erros na validação dos campos";
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex,
@@ -24,21 +27,31 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             HttpStatusCode status,
             WebRequest request) {
 
-        Map<String, String> errors = new HashMap<>();
+        final var errorResponseBuilder = CustomErrorResponse.builder();
+        Map<String, String> erros = new HashMap<>();
+
+        errorResponseBuilder.mensagem(ERROS_DE_VALIDACAO);
 
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
+            erros.put(fieldName, errorMessage);
         });
 
-        return ResponseEntity.status(status).body(errors);
+        errorResponseBuilder.erros(erros);
+        return ResponseEntity.status(status).body(erros);
     }
 
     @ExceptionHandler({DoadorCadastradoException.class})
-    protected ResponseEntity<String> doadorCadastradoHandler(
+    protected ResponseEntity<CustomErrorResponse> doadorCadastradoHandler(
             final RuntimeException exception) {
-        return ResponseEntity.status(400).body(exception.getMessage());
+
+        final var response = CustomErrorResponse.builder()
+                .mensagem(exception.getMessage())
+                .erro(DETALHE_DO_ERRO, exception.getMessage())
+                .build();
+
+        return ResponseEntity.status(400).body(response);
     }
 
 }

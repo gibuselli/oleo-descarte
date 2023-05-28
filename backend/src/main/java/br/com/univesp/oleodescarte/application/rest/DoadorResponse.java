@@ -1,12 +1,17 @@
 package br.com.univesp.oleodescarte.application.rest;
 
 import br.com.univesp.oleodescarte.domain.doador.Doador;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Builder
+@Getter
+@Setter
 @RequiredArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DoadorResponse {
+
     String nome;
     String cidade;
     String bairro;

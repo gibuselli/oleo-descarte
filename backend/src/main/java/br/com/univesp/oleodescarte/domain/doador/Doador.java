@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @Entity
 @Table(name = "DOADOR")
 public class Doador {
@@ -47,7 +48,7 @@ public class Doador {
     @Max(99)
     Double qntDeOleo;
 
-    @NonNull
+    @Setter
     @Column(name = "DOANDO")
     Boolean estaDoando;
 
@@ -58,6 +59,8 @@ public class Doador {
                 .bairro(request.getBairro())
                 .email(request.getEmail())
                 .qntDeOleo(request.getQntDeOleo())
+                .estaDoando(true)
                 .build();
+
     }
 }

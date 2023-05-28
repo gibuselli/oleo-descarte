@@ -1,8 +1,8 @@
 package br.com.univesp.oleodescarte.domain.doador;
 
 import br.com.univesp.oleodescarte.application.rest.DoadorRequest;
-import br.com.univesp.oleodescarte.domain.exception.DoadorCadastradoException;
-import br.com.univesp.oleodescarte.domain.exception.DoadorNaoEncontradoException;
+import br.com.univesp.oleodescarte.infrastructure.exception.DoadorCadastradoException;
+import br.com.univesp.oleodescarte.infrastructure.exception.DoadorNaoEncontradoException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

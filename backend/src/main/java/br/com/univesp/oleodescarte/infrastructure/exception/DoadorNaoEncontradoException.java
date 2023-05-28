@@ -1,4 +1,4 @@
-package br.com.univesp.oleodescarte.domain.exception;
+package br.com.univesp.oleodescarte.infrastructure.exception;
 
 public class DoadorNaoEncontradoException extends RuntimeException {
 
