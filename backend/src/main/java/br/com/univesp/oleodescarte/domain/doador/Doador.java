@@ -23,18 +23,18 @@ public class Doador {
     Long id;
 
     @NotBlank
-    @Column(name = "NOME")
     @Size(min = 3, max = 30)
+    @Column(name = "NOME")
     String nome;
 
     @NotBlank
-    @Column(name = "CIDADE")
     @Size(min = 3, max = 30)
+    @Column(name = "CIDADE")
     String cidade;
 
     @NotBlank
-    @Column(name = "BAIRRO")
     @Size(min = 3, max = 30)
+    @Column(name = "BAIRRO")
     String bairro;
 
     @NotBlank
@@ -44,8 +44,8 @@ public class Doador {
 
     @NonNull
     @PositiveOrZero
-    @Column(name = "QNT_DE_OLEO")
     @Max(99)
+    @Column(name = "QNT_DE_OLEO")
     Double qntDeOleo;
 
     @Setter

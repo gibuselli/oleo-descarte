@@ -50,4 +50,9 @@ public class DoadorService {
         Doador doadorAtualizado = Doador.of(request, doador.getId());
         return save(doadorAtualizado);
     }
+
+    public void delete(String email) {
+        Doador doador = getDoadorByEmail(email);
+        repository.deleteById(doador.getId());
+    }
 }
