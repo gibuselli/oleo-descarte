@@ -28,4 +28,9 @@ public class OleoDescarteController {
         return ResponseEntity.ok(DoadorResponse.of(doadorService.createNew(request)));
     }
 
+    @PutMapping("atualizarCadastro")
+    public ResponseEntity<DoadorResponse> updateDoador(@Valid @RequestBody DoadorRequest request) {
+        return ResponseEntity.ok(DoadorResponse.of(doadorService.update(request)));
+    }
+
 }

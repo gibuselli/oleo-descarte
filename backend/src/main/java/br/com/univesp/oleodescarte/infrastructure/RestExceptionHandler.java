@@ -1,6 +1,7 @@
 package br.com.univesp.oleodescarte.infrastructure;
 
 import br.com.univesp.oleodescarte.infrastructure.exception.DoadorCadastradoException;
+import br.com.univesp.oleodescarte.infrastructure.exception.DoadorNaoEncontradoException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -42,8 +43,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(erros);
     }
 
-    @ExceptionHandler({DoadorCadastradoException.class})
-    protected ResponseEntity<CustomErrorResponse> doadorCadastradoHandler(
+    @ExceptionHandler({DoadorCadastradoException.class, DoadorNaoEncontradoException.class})
+    protected ResponseEntity<CustomErrorResponse> doadorExceptionsHandler(
             final RuntimeException exception) {
 
         final var response = CustomErrorResponse.builder()

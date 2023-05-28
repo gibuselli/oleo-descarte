@@ -61,6 +61,17 @@ public class Doador {
                 .qntDeOleo(request.getQntDeOleo())
                 .estaDoando(true)
                 .build();
+    }
 
+    public static Doador of(DoadorRequest request, Long id) {
+        return Doador.builder()
+                .id(id)
+                .nome(request.getNome())
+                .cidade(request.getCidade())
+                .bairro(request.getBairro())
+                .email(request.getEmail())
+                .qntDeOleo(request.getQntDeOleo())
+                .estaDoando(true)
+                .build();
     }
 }

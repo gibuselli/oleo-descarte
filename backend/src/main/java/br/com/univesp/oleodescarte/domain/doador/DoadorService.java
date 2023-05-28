@@ -44,4 +44,10 @@ public class DoadorService {
 
         return optDoador.get();
     }
+
+    public Doador update(DoadorRequest request) {
+        Doador doador = getDoadorByEmail(request.getEmail());
+        Doador doadorAtualizado = Doador.of(request, doador.getId());
+        return save(doadorAtualizado);
+    }
 }
