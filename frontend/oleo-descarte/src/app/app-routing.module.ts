@@ -6,11 +6,13 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path: 'cadastro',
-    component: CadastroComponent
+    component: CadastroComponent,
+    pathMatch: 'full'
   },
 /*   {
     path: 'listarDoadores',
