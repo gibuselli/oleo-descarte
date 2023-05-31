@@ -13,7 +13,11 @@ export class DoadorService {
     this.API = 'http://localhost:8080/';
   }
 
-  public save(doador: Doador) {
+  save(doador: Doador) {
     return this.http.post<Doador>(this.API, doador)
+  }
+
+  findOne() {
+    return this.http.get<Doador>(this.API)
   }
 }
