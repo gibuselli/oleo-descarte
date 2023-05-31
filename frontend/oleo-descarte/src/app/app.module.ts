@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ListarDoadoresComponent } from './components/listar-doadores/listar-doadores.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
     HomeComponent,
     HeaderComponent,
     CadastroComponent,
+    PerfilComponent,
+    ListarDoadoresComponent,
   ],
   imports: [
     BrowserModule,
